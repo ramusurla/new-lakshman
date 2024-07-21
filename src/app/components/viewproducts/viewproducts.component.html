@@ -1,0 +1,24 @@
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <img class="imga" src={{myproducts.image}}>
+            </div>
+            <div class="but-div">
+                <button>View More</button>&nbsp;&nbsp;&nbsp;
+                <button (click)="addtocart(myproducts)" *ngIf="showadd">Add to Cart</button>&nbsp;
+                <button (click)="removecart(myproducts)" *ngIf="showremove">Remove Itmes</button>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="mt-5">
+                <h4>{{myproducts.name}}</h4>
+                <h1>{{myproducts.price}}</h1>
+                <p>{{myproducts.color}}</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, soluta, optio officiis unde sequi nesciunt ipsam est, dolore dolor omnis temporibus. Dolore quia beatae atque obcaecati expedita! Praesentium, id sit!</p>
+            </div>
+        </div>
+    </div>
+</div>

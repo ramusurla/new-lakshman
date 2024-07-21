@@ -1,0 +1,35 @@
+<div class="box mt-5">
+   <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <input type="text" placeholder="name" class="form-control" formControlName="name"  [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+            <div *ngIf="f['name'].errors['required']">Fullname is required</div>
+          </div>
+    </div>
+    <div class="mb-3">
+        <input type="text" placeholder="email" class="form-control" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+            <div *ngIf="f['email'].errors['required']">Email is required</div>
+          </div>
+    </div>
+    <div class="mb-3">
+        <input type="text" placeholder="phone" class="form-control" formControlName="phone" [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }">
+        <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+            <div *ngIf="f['phone'].errors['required']">Phone is required</div>
+          </div>
+    </div>
+    <div class="text-center mt-3">
+        <button>Submit</button>
+    </div>
+   </form>
+
+   <h1>{{unreadCount}}</h1>
+
+
+</div>
+
+
+
+
+
+

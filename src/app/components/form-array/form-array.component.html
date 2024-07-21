@@ -1,0 +1,82 @@
+
+
+<form [formGroup]="skillsForm">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" formControlName="name" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+            <div *ngIf="f['name'].errors['required']">Full name is required</div>
+        </div>
+        <label for="name" class="my-2">Phone</label>
+        <input type="text" id="name" name="name" formControlName="phone" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }">
+        <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+            <div *ngIf="f['phone'].errors['required']">phone is required</div>
+        </div>
+    </div>
+
+    <div>
+        <input type="radio" name="nomini" value="yes" (change)="toggleSkillsForm($event)">
+        <label>Do you want nominy</label><br>
+        <input type="radio" name="nomini" value="no" (change)="toggleSkillsForm($event)">
+        <label>No</label><br>
+    </div>
+
+
+
+    <div formArrayName="skills" class="mt-5" *ngIf="selectoptionshow">
+        <div class="text-end">
+            <select (change)="onSelectChange($event)">
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div *ngFor="let skill of skills; let i = index" [formGroupName]="i">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Father</label>
+                    <input type="text" formControlName="skill" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && skillsForm.get('skills.' + i + '.skill')?.errors }">
+                    <div *ngIf="submitted && skillsForm.get('skills.' + i + '.skill')?.errors" class="invalid-feedback">
+                        <div *ngIf="submitted && skillsForm.get(['skills', i, 'skill'])?.hasError('required')">Skill
+                            name is required</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Mother</label>
+                    <input type="text" formControlName="exp" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && skillsForm.get('skills.' + i + '.exp')?.errors }">
+                    <div *ngIf="submitted && skillsForm.get('skills.' + i + '.exp')?.errors" class="invalid-feedback">
+                        <div *ngIf="submitted && skillsForm.get(['skills', i, 'exp'])?.hasError('required')">Experience
+                            is required</div>
+                        <div *ngIf="submitted && skillsForm.get(['skills', i, 'exp'])?.hasError('minlength')">Password
+                            must be at least 6 characters</div>
+                    </div>
+                </div>
+            </div>
+            <div class="my-2">
+                <!-- <button class="btn-danger parent" (click)="removeSkill(i)">Remove</button> -->
+            </div>
+        </div>
+        <div>
+        </div>
+    </div>
+    <p>
+        <button (click)="onSubmit()" class="submittt">Submit</button>
+    </p>
+</form>
+
+
+<div class="my-2">
+    <input type="text" placeholder="name" [(ngModel)]="myvale">
+</div>
+<div>
+    <input type="text" placeholder="name" [(ngModel)]="myvale">
+</div>
+<div class="my-2">
+    <button (click)="send()">send</button>
+    <button (click)="stop()">stop timer</button>
+</div>
+<p class="time-remains">{{ remainingTime }}</p>

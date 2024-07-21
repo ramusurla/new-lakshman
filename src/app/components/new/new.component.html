@@ -1,0 +1,137 @@
+
+
+  <section>
+    <div class="text-center">
+      <button class="btnss">Compamy Details</button><button class="btnss">Contact</button>
+    </div>
+
+
+ 
+<button (click)="clcick()">click here</button>
+  </section>
+
+ 
+  
+  
+  <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+      </div>
+      <div class="modal-body">
+        <div *ngIf="showone">
+          <form [formGroup]="formtwo">
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label>Date Of day</label>
+                <input type="number" placeholder="please enter your company name"  formControlName="dateofday" class="form-control"  [ngClass]="{ 'is-invalid': submitted1 && f1['dateofday'].errors }" (input)="onInput($event,dateofmonthInput)"
+                maxlength="2">
+                <div *ngIf="submitted1 && f1['dateofday'].errors">
+                  <div *ngIf="f1['dateofday'].errors['required']">Day is required</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label>Date Of Month</label>
+                <input type="number" placeholder="please enter your company name"  formControlName="dateofmonth" class="form-control"  [ngClass]="{ 'is-invalid': submitted1 && f1['dateofmonth'].errors }"  (input)="onInput($event, dateofyearInput)"
+                #dateofmonthInput
+                maxlength="2">
+                <div *ngIf="submitted1 && f1['dateofmonth'].errors">
+                  <div *ngIf="f1['dateofmonth'].errors['required']">Month is required</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label>Date Of Year</label>
+                <input type="number" placeholder="please enter your company name"  formControlName="dateofyear" class="form-control"  [ngClass]="{ 'is-invalid': submitted1 && f1['dateofyear'].errors }" #dateofyearInput
+                maxlength="4">
+                <div *ngIf="submitted1 && f1['dateofyear'].errors">
+                  <div *ngIf="f1['dateofyear'].errors['required']">Year is required</div>
+                  <div *ngIf="f1['dateofyear'].errors['mismatch']">Year is invalid</div>
+                  <div *ngIf="f1['dateofyear'].errors['pattern']">Please enter a valid 4-digit year</div>
+                </div>
+              </div>
+              <div>
+                <label>Pin Code</label>
+                <input type="number" formControlName="pincode" class="form-control" [ngClass]="{ 'is-invalid': submitted1 && f1['pincode'].errors }" appMaxLength>
+                <div *ngIf="submitted1 && f1['pincode'].errors">
+                  <div *ngIf="f1['pincode'].errors['required']">pincode is required</div>
+                  <div *ngIf="f1['pincode'].errors['pattern']">Please enter a valid 6-digit </div>
+                </div>
+              </div>
+              <div>
+                <button class="my-3" (click)="verify()">Verify</button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div>
+                  <input type="password" placeholder="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted1 && f1['password'].errors }">
+                  <div *ngIf="submitted1 && f1['password'].errors">
+                    <div *ngIf="f1['password'].errors['required']">password is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div>
+                  <input type="password" placeholder="confirm password" class="form-control" formControlName="confirmpassword"  [ngClass]="{ 'is-invalid': submitted1 && f1['confirmpassword'].errors }">
+                  <div *ngIf="submitted1 && f1['confirmpassword'].errors">
+                    <div *ngIf="f1['confirmpassword'].errors['required']">confirmpassword is required</div>
+                    <div *ngIf="f1['confirmpassword'].errors['mismatch']">password did not match</div>
+                    <!-- <div *ngIf="!f1['confirmpassword'].errors">No errors</div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </form>
+        </div>
+      
+      <div *ngIf="showtwo">
+        <form [formGroup]="form">
+          <label>mobile number</label>
+          <input
+            type="number"
+            formControlName="phone"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }"
+          />
+          <div *ngIf="submitted && f['phone'].errors">
+            <div *ngIf="f['phone'].errors['required']">Phone number is required</div>
+          </div>
+          <button (click)="onSubmit()" class="my-3">Verify</button>
+        </form>
+      </div>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
+
+<!-- 
+<form>
+  <input type="text" placeholder="search here" class="form-control" [(ngModel)]="currentvalue">
+</form>
+<div>
+  <div *ngFor="let data of banknames | searchFilter:currentvalue">
+    {{data.bankname}}
+  </div>
+</div> -->
+
+
+
+
+
+
+
+ 
+  

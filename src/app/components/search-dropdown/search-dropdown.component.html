@@ -1,0 +1,35 @@
+
+    <input type="text" placeholder="search here" [(ngModel)]="searchtext" (keydown)="onKeyDown($event)" (change)="selecedvale(this)">
+  
+ <div *ngIf="searchtext.length > 0">
+    <div *ngIf="show">
+        <div *ngFor="let data of newdata |filter:searchtext" (click)="onSelectBank(data.bankname)">
+          {{data.bankname}}<br>
+         
+        </div>
+    </div>
+ </div>
+
+ <div class="my-2" *ngIf="myselecedvalue">
+    <input type="text" [(ngModel)]="branchtext" (keydown)="branchkey($event)" placeholder="Brach">
+ </div>
+<div *ngIf="branchtext.length > 0">
+   <div *ngIf="bracnhshow">
+      <div *ngFor="let data of newdata |filter:branchtext" (click)="sendbrandch(data)">
+         {{data.branch}}
+       </div>
+    </div>
+</div>
+
+<div class="my-2" *ngIf="myselecedvalue">
+<input type="text" placeholder="IFSC" [(ngModel)]="ifsctext" (keydown)="ifsckey($event)">
+</div>
+<div *ngIf="ifsctext.length > 0">
+   <div *ngIf="showifsc">
+      <div *ngFor="let data of newdata |filter:ifsctext" (click)="sendifsc(data)">
+         {{data.ifsc}}
+      </div>
+   </div>
+</div>
+
+

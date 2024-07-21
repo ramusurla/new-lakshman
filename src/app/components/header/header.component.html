@@ -1,0 +1,22 @@
+<section>
+    <div class="container-fluid">
+        <div class="row nav">
+            <div class="col-md-10">
+                <h3 class="e-com-head">E-Commerce</h3>
+            </div>
+            <div class="col-md-2">
+                <div class="text-center">
+                    <span class="count">{{mycount}}</span>
+                    <i class="fa-solid fa-cart-shopping cart-icon" routerLink="cart-page">&nbsp;{{cartitems}}</i>
+                </div>
+            </div>
+           </div>
+       </div>
+
+       <button (click)="myci()">clcik</button>
+       <div class="notification">
+        <ng-container *ngFor="let notification of notifications">
+          <div class="notification-item">{{ notification }}</div>
+        </ng-container>
+      </div>
+</section>

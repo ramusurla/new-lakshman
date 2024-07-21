@@ -1,0 +1,44 @@
+<ng-container *ngIf="showproduct.length !=0">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Brand</th>
+                <th>Color</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of showproduct">
+                <td><img class="cart-imge" src={{data.image}}></td>
+                <td>{{data.name}}</td>
+                <td>{{data.color}}</td>
+                <td>{{data.price}}</td>
+                <td>
+                    <i class="fa fa-minus-square minus-icon" (click)="decrement(data)"></i>
+                    {{data.qty}}
+                    <i class="fa fa-plus-square plus-icon" (click)="incerement(data)"></i>
+                </td>
+                <td>{{data.qty* data.price}}</td>
+                <td><button (click)="deleteimage(data)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <h1>Total Amount:{{calcguradtotal()}}</h1>
+    </div>
+</ng-container>
+
+
+<ng-container *ngIf="showproduct.length === 0">
+    <div class="empty-box">
+       <div class="para">
+        <h1>Your Cart Empty</h1>
+        <p>Please Select any Items</p>
+        <button routerLink="/">Select items</button>
+       </div>
+    </div>
+</ng-container>

@@ -1,0 +1,29 @@
+
+<section>
+
+    <h1 class="text-center">This is home page</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" *ngFor="let data of produts">
+                <div class="card mt-5">
+                    <div>
+                        <img routerLink="/viewproducts/{{data.id}}" class="imge" src={{data.image}}>
+                    </div>
+                    <div>
+                        <h4>{{data.name}}</h4>
+                        <h6>{{data.price}}</h6>
+                        <p>{{data.color}}</p>
+                        <p>{{data.modal}}</p>
+                    </div>
+                    <div>
+                        <button routerLink="/viewproducts/{{data.id}}">View More</button>&nbsp;&nbsp;
+                        <button (click)="addtocart(data)">Add to cart</button>&nbsp;
+                        <button (click)="removeitems(data)">Remove Items</button>
+                    </div>
+                </div>
+            </div>
+
+            <button (click)="logout()" class="logoutbtn">Log out</button>
+        </div>
+    </div>
+</section>

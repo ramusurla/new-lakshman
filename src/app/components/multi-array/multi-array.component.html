@@ -1,0 +1,30 @@
+<section>
+    <button (click)="add()" class="my-5">add</button>
+    <form [formGroup]="skillsForm" (ngSubmit)="onSubmit()">
+        <div formArrayName="skills">
+            <div *ngFor="let skill of skills.controls; let i=index" class="my-5">
+                <p>Nominee {{i+1}}</p>
+                <div [formGroupName]="i">
+                    <input type="text" formControlName="skill">
+                    exp:
+                    <input type="text" formControlName="exp">
+
+                    <div>
+                        <input type="radio" formControlName="addressOption" value="no">
+                        <label for="html">Same address</label><br>
+                        <input type="radio" formControlName="addressOption" value="yes">
+                        <label for="css">Do you want to add another address</label><br>
+                    </div>
+                    <div *ngIf="skill.get('addressOption')?.value === 'yes'">
+                        <input type="text" placeholder="address1" formControlName="addressone">&nbsp;&nbsp;
+                        <input type="text" placeholder="address2" formControlName="addresstwo">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+</section>

@@ -1,0 +1,69 @@
+<section>
+
+    <div class="my-5">
+        <select  formControlName="myselect" (change)="myselectedValue($event)">
+            <option value="">--select--</option>
+            <option value="passport">Passport</option>
+            <option value="aadhar">Adhar Card</option>
+            <option value="voterid">Voter Id</option>
+            <option value="drivinglicence">Driving Licence</option>
+        </select>
+    </div>
+
+    <form [formGroup]="skillsForm" (ngSubmit)="onSubmit()">
+        <div formArrayName="skills">
+          <div *ngFor="let skill of passport.controls; let i=index">
+            <div [formGroupName]="i">
+              <input type="file" formControlName="file" class="form-control"  (change)="showPreview($event)">
+            </div>
+
+            <div class="imagePreview" *ngIf="imageURL">
+                <img [src]="imageURL" [alt]="uploadForm.value.name">
+              </div>
+          </div>
+        </div>       
+      </form>
+
+   
+      <form [formGroup]="skillsForm" (ngSubmit)="onSubmit()">
+        <div formArrayName="aadhar">
+          <div *ngFor="let skill of aadhar.controls; let i=index">
+            <div [formGroupName]="i">
+              <input type="file" formControlName="frontimage" class="form-control my-3" (change)="frontimage($event)">
+              <input type="file" formControlName="backimage" class="form-control" (change)="backimage($event)">
+            </div>
+            <div class="imagePreview my-3" *ngIf="frontImage && frontImage !== ''">
+                <img [src]="frontImage" [alt]="uploadForm.value.name">
+            </div>
+            <div class="imagePreview" *ngIf="backImage && backImage !== ''">
+                <img [src]="backImage" [alt]="uploadForm.value.name">
+            </div>
+          </div>
+        </div>       
+      </form>
+
+      <form [formGroup]="skillsForm" (ngSubmit)="onSubmit()">
+        <div formArrayName="voterid">
+          <div *ngFor="let skill of voterid.controls; let i=index">
+            <div [formGroupName]="i">
+              <input type="file" formControlName="frontimage" class="form-control my-3">
+              <input type="file" formControlName="backimage" class="form-control">
+            </div>
+          </div>
+        </div>       
+      </form>
+
+      <form [formGroup]="skillsForm" (ngSubmit)="onSubmit()">
+        <div formArrayName="drivingLicence">
+          <div *ngFor="let skill of drivingLicence.controls; let i=index">
+            <div [formGroupName]="i">
+              <input type="file" formControlName="file" class="form-control my-3" (change)="driving($event)">
+            </div>
+
+            <div class="imagePreview" *ngIf="DrivingImage">
+                <img [src]="DrivingImage" [alt]="uploadForm.value.name">
+              </div>
+          </div>
+        </div>       
+      </form>
+</section>
